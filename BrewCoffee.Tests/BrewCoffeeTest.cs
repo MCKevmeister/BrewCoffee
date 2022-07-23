@@ -1,5 +1,6 @@
 using BrewCoffee.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 
 namespace BrewCoffee.Tests;
 
