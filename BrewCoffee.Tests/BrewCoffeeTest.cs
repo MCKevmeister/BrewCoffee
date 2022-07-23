@@ -11,16 +11,17 @@ public class Tests
     }
 
     [Test]
-    public async Task GetBrewCoffee_Returns200()
+    public async Task Get_BrewCoffee_Returns200()
     {
         // Arrange
-        var sut = new CoffeeController();
+        var coffeeServiceMock = new Mock<ICoffeeService>();
+        var sut = new CoffeeController(coffeeServiceMock.Object);
 
         // Act
         var result = await sut.Get();
 
         // Assert
-        Assert.That(result, Is.TypeOf<OkResult>());
+        Assert.That(result, Is.TypeOf<OkObjectResult>());
     }
     
     // Get brew coffee on success Invokes Coffee Service
