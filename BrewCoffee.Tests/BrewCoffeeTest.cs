@@ -1,4 +1,6 @@
 using BrewCoffee.Controllers;
+using BrewCoffee.Interfaces;
+using BrewCoffee.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 

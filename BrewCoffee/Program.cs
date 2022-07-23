@@ -1,4 +1,5 @@
-using BrewCoffee.Controllers;
+using BrewCoffee.Interfaces;
+using BrewCoffee.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
