@@ -6,7 +6,7 @@ namespace BrewCoffee.Controllers;
 
 [ApiController]
 [Route("brew-coffee")]
-public class CoffeeController: ControllerBase
+public class CoffeeController : ControllerBase
 {
     private readonly ICoffeeService _coffeeService;
 
@@ -18,8 +18,6 @@ public class CoffeeController: ControllerBase
     [HttpGet]
     public Task<ActionResult<Coffee>> Get()
     {
-        var coffee =  _coffeeService.BrewCoffee();
-        return Task.FromResult<ActionResult<Coffee>>(Ok(coffee));
-        
+        return _coffeeService.BrewCoffee();
     }
 }

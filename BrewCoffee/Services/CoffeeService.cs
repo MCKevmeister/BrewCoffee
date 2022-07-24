@@ -1,12 +1,18 @@
 ﻿using BrewCoffee.Interfaces;
 using BrewCoffee.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrewCoffee.Services;
 
-public class CoffeeService:ICoffeeService
+public class CoffeeService : ICoffeeService
 {
-    public Task<Coffee> BrewCoffee()
+    private static int CoffeesMade { get; set; }
+
+    public Task<ActionResult<Coffee>> BrewCoffee()
     {
-        return Task.FromResult(new Coffee("Your piping hot coffee is ready"));
+        CoffeesMade++;
+        return CoffeesMade < 5
+            ? Task.FromResult<ActionResult<Coffee>>(new OkObjectResult(new Coffee()))
+            : Task.FromResult<ActionResult<Coffee>>(new StatusCodeResult(503));
     }
 }
