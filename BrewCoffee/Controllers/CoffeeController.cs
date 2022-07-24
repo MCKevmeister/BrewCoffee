@@ -1,4 +1,5 @@
 ﻿using BrewCoffee.Interfaces;
+using BrewCoffee.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrewCoffee.Controllers;
@@ -13,11 +14,12 @@ public class CoffeeController: ControllerBase
     {
         _coffeeService = coffeeService;
     }
-
+    
     [HttpGet]
-    public Task<IActionResult> Get()
+    public Task<ActionResult<Coffee>> Get()
     {
         var coffee =  _coffeeService.BrewCoffee();
-        return Task.FromResult<IActionResult>(Ok(coffee));
+        return Task.FromResult<ActionResult<Coffee>>(Ok(coffee));
+        
     }
 }

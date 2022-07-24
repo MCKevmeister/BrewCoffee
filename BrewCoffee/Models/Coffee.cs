@@ -1,12 +1,14 @@
-﻿namespace BrewCoffee.Models;
+﻿using System.Globalization;
+
+namespace BrewCoffee.Models;
 
 public class Coffee
 {
-    private string Message { get; set; }
-    private DateTime Prepared { get; set; }
+    public string Message { get; set; }
+    public string Prepared { get; set; }
     public Coffee(string message)
     {
         Message = message;
-        Prepared = DateTime.Now;
+        Prepared = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture);
     }
 }
