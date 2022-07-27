@@ -8,17 +8,18 @@ public class CoffeeService : ICoffeeService
 {
     private static int CoffeesMade { get; set; }
 
-    public Task<ActionResult<Coffee>> BrewCoffee()
+    public ActionResult BrewCoffee()
     {
         CoffeesMade++;
-        switch (CoffeesMade)
+        return CoffeesMade switch
         {
-            case < 5 when DateTime.Now.Day == 1 && DateTime.Now.Month == 4:
-                return Task.FromResult<ActionResult<Coffee>>(new StatusCodeResult(418));
-            case < 5:
-                return Task.FromResult<ActionResult<Coffee>>(new OkObjectResult(new Coffee()));
-            default:
-                return Task.FromResult<ActionResult<Coffee>>(new StatusCodeResult(503));
-        }
+            < 5 when DateTime.Now.Day == 1 && DateTime.Now.Month == 4 =>
+                new StatusCodeResult(418),
+            
+            < 5 =>
+                new OkObjectResult(new Coffee()),
+            
+            _ => new StatusCodeResult(503)
+        };
     }
 }

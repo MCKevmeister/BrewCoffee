@@ -5,5 +5,5 @@ namespace BrewCoffee.Interfaces;
 
 public interface ICoffeeService
 {
-    public Task<ActionResult<Coffee>> BrewCoffee();
+    public ActionResult BrewCoffee();
 }

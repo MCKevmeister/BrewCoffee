@@ -16,8 +16,8 @@ public class CoffeeController : ControllerBase
     }
     
     [HttpGet]
-    public Task<ActionResult<Coffee>> Get()
+    public Task<ActionResult> Get()
     {
-        return _coffeeService.BrewCoffee();
+        return Task.FromResult(_coffeeService.BrewCoffee());
     }
 }
